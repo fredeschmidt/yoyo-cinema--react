@@ -9,6 +9,7 @@ class Movie extends Component {
         }
     }
 
+    // show / hide details for movies
     toggleDetails(e) {
         e.preventDefault()
         this.setState(prevState => ({

@@ -1,6 +1,8 @@
 import React from 'react'
 import Movie from './Movie'
 
+// Favorite bar reuse movie component and methods
+
 const handleToggleFavoriteFromFavorites = (props, movie)  => {
     props.handleToggleFavorite(movie)
 }
@@ -19,24 +21,18 @@ const Favorites = (props) => {
                 </span>
 
                 <div className="favorites-bar_container">
-                    <div className="section_header">
-                        <h2>Your list of favorites</h2>
-                    </div>
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="results results--favorites">
-                                <ul>
-                                    {props.favoriteMovies.map( (favoriteMovie) =>
-                                        <Movie 
-                                            movie={favoriteMovie}
-                                            toggleFavorite={(movie) => handleToggleFavoriteFromFavorites(props, movie)}
-                                            isFavorite={() => isFavorite(props, favoriteMovie.id)}
-                                            key={favoriteMovie.id.toString()}
-                                        />
-                                    )}
-                                </ul>
-                            </div>
-                        </div>
+                    <h2>Your list of favorites</h2>
+                    <div className="results results--favorites">
+                        <ul>
+                            {props.favoriteMovies.map( (favoriteMovie) =>
+                                <Movie 
+                                    movie={favoriteMovie}
+                                    toggleFavorite={(movie) => handleToggleFavoriteFromFavorites(props, movie)}
+                                    isFavorite={() => isFavorite(props, favoriteMovie.id)}
+                                    key={favoriteMovie.id.toString()}
+                                />
+                            )}
+                        </ul>
                     </div>
                 </div>
             </div>

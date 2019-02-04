@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props)
 
-        // sync state with local storage on load (saved favorite movies)
+        // sync state with local storage on load (for saved favorite movies)
         const hasFavoritesInLocalStorage = localStorage.getItem('favoriteMovies') !== null
         const localStorageFavorites = JSON.parse(localStorage.getItem('favoriteMovies'))
 
@@ -39,7 +39,7 @@ class App extends Component {
                     query: e.target.value
                 }
             })
-            // updates the state with the movies found
+            // update the state with the movies found
             .then(response => {
                 this.setState({movies: response.data.results})
             })
@@ -90,7 +90,7 @@ class App extends Component {
                 <div className="section">
                     <div className="container">
                         <div className="row">
-                            <div className="col-10">
+                            <div className="col-12 col-sm-8">
 
                                 <div className="section_header">
                                     <h1>Yoyo Cinema</h1>
@@ -106,18 +106,16 @@ class App extends Component {
                                 </div>
 
                                 <div className="results results--search">
-                                    <form>
-                                        <ul>
-                                            {this.state.movies.map( (movie) =>
-                                                <Movie 
-                                                    movie={movie}
-                                                    toggleFavorite={this.handleToggleFavorite}
-                                                    isFavorite={this.isFavorite(movie.id)}
-                                                    key={movie.id.toString()}
-                                                />
-                                            )}
-                                        </ul>
-                                    </form>
+                                    <ul>
+                                        {this.state.movies.map( (movie) =>
+                                            <Movie 
+                                                movie={movie}
+                                                toggleFavorite={this.handleToggleFavorite}
+                                                isFavorite={this.isFavorite(movie.id)}
+                                                key={movie.id.toString()}
+                                            />
+                                        )}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
